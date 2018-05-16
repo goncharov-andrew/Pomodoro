@@ -84,37 +84,37 @@ Data const & SettingsSaver::getData()
 
 Data::Data()
 {
-    volumeOfRing = "";
-    volumeOfTick = "";
-    pathToMelodyOfRing = "";
-    pathToMelodyOfTick = "";
-    durationOfShortBreak = "";
-    durationOfLongBreak = "";
-    durationOfWork = "";
+    mVolumeOfRing = "";
+    mVolumeOfTick = "";
+    mPathToMelodyOfRing = "";
+    mPathToMelodyOfTick = "";
+    mDurationOfShortBreak = "";
+    mDurationOfLongBreak = "";
+    mDurationOfWork = "";
 }
 
 Data::Data(Data const & data)
 {
-    this->volumeOfRing = data.volumeOfRing;
-    this->volumeOfTick = data.volumeOfTick;
-    this->pathToMelodyOfRing = data.pathToMelodyOfRing;
-    this->pathToMelodyOfTick = data.pathToMelodyOfTick;
-    this->durationOfShortBreak = data.durationOfShortBreak;
-    this->durationOfLongBreak = data.durationOfLongBreak;
-    this->durationOfWork = data.durationOfWork;
+    this->mVolumeOfRing = data.mVolumeOfRing;
+    this->mVolumeOfTick = data.mVolumeOfTick;
+    this->mPathToMelodyOfRing = data.mPathToMelodyOfRing;
+    this->mPathToMelodyOfTick = data.mPathToMelodyOfTick;
+    this->mDurationOfShortBreak = data.mDurationOfShortBreak;
+    this->mDurationOfLongBreak = data.mDurationOfLongBreak;
+    this->mDurationOfWork = data.mDurationOfWork;
 }
 
 Data & Data::operator=(Data const & data)
 {
     if(this != &data)
     {
-        this->volumeOfRing = data.volumeOfRing;
-        this->volumeOfTick = data.volumeOfTick;
-        this->pathToMelodyOfRing = data.pathToMelodyOfRing;
-        this->pathToMelodyOfTick = data.pathToMelodyOfTick;
-        this->durationOfShortBreak = data.durationOfShortBreak;
-        this->durationOfLongBreak = data.durationOfLongBreak;
-        this->durationOfWork = data.durationOfWork;
+        this->mVolumeOfRing = data.mVolumeOfRing;
+        this->mVolumeOfTick = data.mVolumeOfTick;
+        this->mPathToMelodyOfRing = data.mPathToMelodyOfRing;
+        this->mPathToMelodyOfTick = data.mPathToMelodyOfTick;
+        this->mDurationOfShortBreak = data.mDurationOfShortBreak;
+        this->mDurationOfLongBreak = data.mDurationOfLongBreak;
+        this->mDurationOfWork = data.mDurationOfWork;
     }
 
     return *this;
@@ -122,70 +122,70 @@ Data & Data::operator=(Data const & data)
 
 QString const & Data::getVolumeOfRing() const
 {
-    return this->volumeOfRing;
+    return this->mVolumeOfRing;
 }
 
 QString const & Data::getVolumeOfTick() const
 {
-    return this->volumeOfTick;
+    return this->mVolumeOfTick;
 }
 
 QString const & Data::getPathToMelodyOfRing() const
 {
-    return this->pathToMelodyOfRing;
+    return this->mPathToMelodyOfRing;
 }
 
 QString const & Data::getPathToMelodyOfTick() const
 {
-    return this->pathToMelodyOfTick;
+    return this->mPathToMelodyOfTick;
 }
 
 QString const & Data::getDurationOfShortBreak() const
 {
-    return this->durationOfShortBreak;
+    return this->mDurationOfShortBreak;
 }
 
 QString const & Data::getDurationOfLongBreak() const
 {
-    return this->durationOfLongBreak;
+    return this->mDurationOfLongBreak;
 }
 
 QString const & Data::getDurationOfWork() const
 {
-    return this->durationOfWork;
+    return this->mDurationOfWork;
 }
 
 void Data::setVolumeOfRing(QString const & data)
 {
-    this->volumeOfRing = data;
+    this->mVolumeOfRing = data;
 }
 
 void Data::setVolumeOfTick(QString const & data)
 {
-    this->volumeOfTick = data;
+    this->mVolumeOfTick = data;
 }
 
 void Data::setPathToMelodyOfRing(QString const & data)
 {
-    this->pathToMelodyOfRing = data;
+    this->mPathToMelodyOfRing = data;
 }
 
 void Data::setPathToMelodyOfTick(QString const & data)
 {
-    this->pathToMelodyOfTick = data;
+    this->mPathToMelodyOfTick = data;
 }
 
 void Data::setDurationOfShortBreak(QString const & data)
 {
-    this->durationOfShortBreak = data;
+    this->mDurationOfShortBreak = data;
 }
 
 void Data::setDurationOfLongBreak(QString const & data)
 {
-    this->durationOfLongBreak = data;
+    this->mDurationOfLongBreak = data;
 }
 
 void Data::setDurationOfWork(QString const & data)
 {
-    this->durationOfWork = data;
+    this->mDurationOfWork = data;
 }

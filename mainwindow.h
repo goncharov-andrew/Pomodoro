@@ -37,9 +37,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    PomodoroTimer *pomodoroTimer;
+    PomodoroTimer *mPomodoroTimer;
     Settings *mWndSettings;
-    QMediaPlayer *m_player;
+    QMediaPlayer *mPlayer;
 };
 
 #endif // MAINWINDOW_H

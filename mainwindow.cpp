@@ -4,9 +4,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    pomodoroTimer(new PomodoroTimer),    
+    mPomodoroTimer(new PomodoroTimer),
     mWndSettings(new Settings),
-    m_player(new QMediaPlayer(this))
+    mPlayer(new QMediaPlayer(this))
 {
     ui->setupUi(this);
 
@@ -21,11 +21,11 @@ MainWindow::~MainWindow()
 {
     delete ui;
 
-    delete pomodoroTimer;
+    delete mPomodoroTimer;
 
     delete mWndSettings;
 
-    delete m_player;
+    delete mPlayer;
 }
 
 void MainWindow::on_pushButton_settings_clicked()
@@ -36,22 +36,22 @@ void MainWindow::on_pushButton_settings_clicked()
 
 void MainWindow::on_pushButton_timeStart_clicked()
 {
-    this->pomodoroTimer->startPomodoroTimer();
+    this->mPomodoroTimer->startPomodoroTimer();
 
-    m_player->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfTick()));
-    m_player->setVolume(SettingsSaver::getInstance().getData().getVolumeOfTick().toInt());
-    m_player->play();
+    mPlayer->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfTick()));
+    mPlayer->setVolume(SettingsSaver::getInstance().getData().getVolumeOfTick().toInt());
+    mPlayer->play();
 }
 
 void MainWindow::on_pushButton_timeStop_clicked()
 {
-    this->pomodoroTimer->stopPomodoroTimer();
+    this->mPomodoroTimer->stopPomodoroTimer();
 
     this->ui->progressBar_work->setValue(0);
 
     this->ui->progressBar_break->setValue(0);
 
-    m_player->stop();
+    mPlayer->stop();
 }
 
 void MainWindow::set_Persent_of_work(int p)
@@ -60,10 +60,10 @@ void MainWindow::set_Persent_of_work(int p)
 
     if(100 == p)
     {
-        m_player->stop();
-        m_player->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfRing()));
-        m_player->setVolume(SettingsSaver::getInstance().getData().getVolumeOfRing().toInt());
-        m_player->play();
+        mPlayer->stop();
+        mPlayer->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfRing()));
+        mPlayer->setVolume(SettingsSaver::getInstance().getData().getVolumeOfRing().toInt());
+        mPlayer->play();
     }
 }
 
@@ -73,21 +73,21 @@ void MainWindow::set_Persent_of_break(int p)
 
     if(100 == p)
     {
-        m_player->stop();
-        m_player->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfTick()));
-        m_player->setVolume(SettingsSaver::getInstance().getData().getVolumeOfTick().toInt());
-        m_player->play();
+        mPlayer->stop();
+        mPlayer->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfTick()));
+        mPlayer->setVolume(SettingsSaver::getInstance().getData().getVolumeOfTick().toInt());
+        mPlayer->play();
     }
 }
 
 void MainWindow::initPomodoroTimer()
 {
-    pomodoroTimer->setdurationOfWork(SettingsSaver::getInstance().getData().getDurationOfWork().toInt());
-    pomodoroTimer->setdurationOfShortBreak(SettingsSaver::getInstance().getData().getDurationOfShortBreak().toInt());
-    pomodoroTimer->setdurationOfLongBreak(SettingsSaver::getInstance().getData().getDurationOfLongBreak().toInt());
+    mPomodoroTimer->setdurationOfWork(SettingsSaver::getInstance().getData().getDurationOfWork().toInt());
+    mPomodoroTimer->setdurationOfShortBreak(SettingsSaver::getInstance().getData().getDurationOfShortBreak().toInt());
+    mPomodoroTimer->setdurationOfLongBreak(SettingsSaver::getInstance().getData().getDurationOfLongBreak().toInt());
 
-    QObject::connect(pomodoroTimer, SIGNAL(persentOfWork(int)), this, SLOT(set_Persent_of_work(int)));
-    QObject::connect(pomodoroTimer, SIGNAL(persentOfBreak(int)), this, SLOT(set_Persent_of_break(int)));
+    QObject::connect(mPomodoroTimer, SIGNAL(persentOfWork(int)), this, SLOT(set_Persent_of_work(int)));
+    QObject::connect(mPomodoroTimer, SIGNAL(persentOfBreak(int)), this, SLOT(set_Persent_of_break(int)));
 }
 
 void MainWindow::setNewData(Data d)

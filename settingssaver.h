@@ -9,13 +9,13 @@
 class Data
 {
 private:
-    QString volumeOfRing;
-    QString volumeOfTick;
-    QString pathToMelodyOfRing;
-    QString pathToMelodyOfTick;
-    QString durationOfShortBreak;
-    QString durationOfLongBreak;
-    QString durationOfWork;
+    QString mVolumeOfRing;
+    QString mVolumeOfTick;
+    QString mPathToMelodyOfRing;
+    QString mPathToMelodyOfTick;
+    QString mDurationOfShortBreak;
+    QString mDurationOfLongBreak;
+    QString mDurationOfWork;
 
 public:
     explicit Data();
