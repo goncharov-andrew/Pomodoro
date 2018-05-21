@@ -34,7 +34,8 @@ HEADERS += \
         mainwindow.h \
     settings.h \
     pomodorotimer.h \
-    settingssaver.h
+    settingssaver.h \
+    constants.h
 
 FORMS += \
         mainwindow.ui \

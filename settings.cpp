@@ -82,15 +82,15 @@ void Settings::on_pushButton_save_clicked()
 
 void Settings::initComboBoxes()
 {
-    for(int i = 3; i < 6; ++i)
+    for(int i = MIN_SHORT_BREAK; i < MAX_SHORT_BREAK; ++i)
     {
         this->ui->comboBox_shortBreak->addItem(QString::number(i), i);
     }
-    for(int i = 10; i < 35; i+=5)
+    for(int i = MIN_LONG_BREAK; i < MAX_LONG_BREAK; i+=INCREMENT_OF_LONG_BREAK)
     {
         this->ui->comboBox_longBreak->addItem(QString::number(i), i);
     }
-    for(int i = 15; i < 50; i+=5)
+    for(int i = MIN_TIME_OF_WORK; i < MAX_TIME_OF_WORK; i+=INCREMENT_OF_LONG_POMODORO)
     {
         this->ui->comboBox_pomodoro->addItem(QString::number(i), i);
     }

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFileDialog>
 #include "settingssaver.h"
+#include "constants.h"
 
 namespace Ui {
 class Settings;

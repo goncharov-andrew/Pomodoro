@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    SettingsSaver::getInstance().loadSettings("./Data.json");
+    SettingsSaver::getInstance().loadSettings(PATH_TO_CONFIG_FILE);
 
     initPomodoroTimer();
 
@@ -47,9 +47,9 @@ void MainWindow::on_pushButton_timeStop_clicked()
 {
     this->mPomodoroTimer->stopPomodoroTimer();
 
-    this->ui->progressBar_work->setValue(0);
+    this->ui->progressBar_work->setValue(DEFAULT_VALUE);
 
-    this->ui->progressBar_break->setValue(0);
+    this->ui->progressBar_break->setValue(DEFAULT_VALUE);
 
     mPlayer->stop();
 }
@@ -58,7 +58,7 @@ void MainWindow::set_Persent_of_work(int p)
 {
     this->ui->progressBar_work->setValue(p);
 
-    if(100 == p)
+    if(HUNDRED_PERSENT == p)
     {
         mPlayer->stop();
         mPlayer->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfRing()));
@@ -71,7 +71,7 @@ void MainWindow::set_Persent_of_break(int p)
 {
     this->ui->progressBar_break->setValue(p);
 
-    if(100 == p)
+    if(HUNDRED_PERSENT == p)
     {
         mPlayer->stop();
         mPlayer->setMedia(QUrl(SettingsSaver::getInstance().getData().getPathToMelodyOfTick()));
@@ -94,5 +94,5 @@ void MainWindow::setNewData(Data d)
 {
     SettingsSaver::getInstance().setData(d);
 
-    SettingsSaver::getInstance().saveSettings("./Data.json");
+    SettingsSaver::getInstance().saveSettings(PATH_TO_CONFIG_FILE);
 }

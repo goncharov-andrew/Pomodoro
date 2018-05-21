@@ -7,6 +7,7 @@
 #include "settings.h"
 #include "settingssaver.h"
 #include "pomodorotimer.h"
+#include "constants.h"
 
 namespace Ui {
 class MainWindow;

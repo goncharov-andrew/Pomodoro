@@ -1,12 +1,10 @@
 #ifndef POMODOROTIMER_H
 #define POMODOROTIMER_H
 
-#define COUNTOFPOMODORO   4
-#define TIMERINTERVAL     1000
-
 enum Level {WORK, SHORTBREAK, LONGBREAK};
 
 #include <QObject>
+#include "constants.h"
 
 class PomodoroTimer : public QObject
 {

@@ -4,11 +4,11 @@ PomodoroTimer::PomodoroTimer(QObject *parent) : QObject(parent)
 {
     PomodoroTimer::timeInterval = TIMERINTERVAL;
 
-    durationOfWork = 0;
-    durationOfShortBreak = 0;
-    durationOfLongBreak = 0;
-    counter = 0;
-    numberOfPomidor = 0;
+    durationOfWork = DEFAULT_VALUE;
+    durationOfShortBreak = DEFAULT_VALUE;
+    durationOfLongBreak = DEFAULT_VALUE;
+    counter = DEFAULT_VALUE;
+    numberOfPomidor = DEFAULT_VALUE;
     currentPeriod = Level::WORK;
 }
 
@@ -21,8 +21,8 @@ void PomodoroTimer::stopPomodoroTimer()
 {
     PomodoroTimer::killTimer(PomodoroTimer::idTimer);
 
-    counter = 0;
-    numberOfPomidor = 0;
+    counter = DEFAULT_VALUE;
+    numberOfPomidor = DEFAULT_VALUE;
     currentPeriod = Level::WORK;
 }
 
@@ -47,23 +47,23 @@ void PomodoroTimer::timerEvent(QTimerEvent *event)
 
     if(Level::WORK == currentPeriod)
     {
-        emit persentOfBreak(0);
+        emit persentOfBreak(ZERO_PERSENT);
 
         if(counter < durationOfWork)
         {
-            int temp = int(double(counter) / durationOfWork * 100);
+            int temp = int(double(counter) / durationOfWork * HUNDRED_PERSENT);
 
             emit persentOfWork(temp);
         }
         else if(counter == durationOfWork)
         {
-            emit persentOfWork(100);
+            emit persentOfWork(HUNDRED_PERSENT);
 
             ++numberOfPomidor;
 
             if(COUNTOFPOMODORO == numberOfPomidor)
             {
-                numberOfPomidor = 0;
+                numberOfPomidor = DEFAULT_VALUE;
 
                 currentPeriod = Level::LONGBREAK;
             }
@@ -72,7 +72,7 @@ void PomodoroTimer::timerEvent(QTimerEvent *event)
                 currentPeriod = Level::SHORTBREAK;
             }
 
-            counter = 0;
+            counter = DEFAULT_VALUE;
         }
     }
     else if(Level::SHORTBREAK == currentPeriod)
@@ -87,18 +87,18 @@ void PomodoroTimer::timerEvent(QTimerEvent *event)
 
 void PomodoroTimer::handleBreak(int timeOfBreak)
 {
-    emit persentOfWork(0);
+    emit persentOfWork(ZERO_PERSENT);
 
     if(counter < timeOfBreak)
     {
-        emit persentOfBreak(int(double(counter) / timeOfBreak * 100));
+        emit persentOfBreak(int(double(counter) / timeOfBreak * HUNDRED_PERSENT));
     }
     else if(counter == timeOfBreak)
     {
-        emit persentOfBreak(100);
+        emit persentOfBreak(HUNDRED_PERSENT);
 
         currentPeriod = Level::WORK;
 
-        counter = 0;
+        counter = DEFAULT_VALUE;
     }
 }
